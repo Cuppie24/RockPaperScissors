@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "BCIS+4ydX88=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\CuppiePC\\source\\repos\\RockPaperScissors\\RockPaperScissors\\RockPaperScissors.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\CuppiePC\\.nuget\\packages\\consoletables\\2.6.1\\consoletables.2.6.1.nupkg.sha512",
+    "C:\\Users\\CuppiePC\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512"
+  ],
+  "logs": []
+}

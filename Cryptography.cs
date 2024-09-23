@@ -6,7 +6,7 @@ namespace RockPaperScissors
 {
     internal class Cryptography
     {
-        public byte[] KeyGenerate(int LengthInBits)
+        public byte[] GenerateKey(int LengthInBits)
         {
             byte[] key = new byte[LengthInBits / 8];
             using (var rng = RandomNumberGenerator.Create()) 
@@ -14,7 +14,7 @@ namespace RockPaperScissors
             return key;
         }
 
-        public byte[] HmacGenerate(string message, byte[] key)
+        public byte[] GenerateHMAC(string message, byte[] key)
         {            
             //ссоздание объекта hmac
             HMac hMac = new HMac(new Org.BouncyCastle.Crypto.Digests.Sha256Digest());

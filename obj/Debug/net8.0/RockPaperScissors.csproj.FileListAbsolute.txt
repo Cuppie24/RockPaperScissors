@@ -16,3 +16,4 @@ C:\Users\CuppiePC\source\repos\RockPaperScissors\RockPaperScissors\bin\Debug\net
 C:\Users\CuppiePC\source\repos\RockPaperScissors\RockPaperScissors\obj\Debug\net8.0\RockPaperScissors.csproj.AssemblyReference.cache
 C:\Users\CuppiePC\source\repos\RockPaperScissors\RockPaperScissors\obj\Debug\net8.0\RockPape.65892C9A.Up2Date
 C:\Users\CuppiePC\source\repos\RockPaperScissors\RockPaperScissors\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\CuppiePC\source\repos\RockPaperScissors\RockPaperScissors\obj\Debug\net8.0\RockPaperScissors.sourcelink.json

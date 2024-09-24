@@ -3,50 +3,46 @@ namespace RockPaperScissors
 {
     internal class Help
     {
-        public void PrintHelpTable(string[] moves)
+        private string[] _moves;
+        private int[,] _matrix;
+        public void PrintHelpTable()
         {
-            string win = "Win", lose = "Lose", draw = "Draw";
-            if (moves.Length == 0 || moves.Length % 2 == 0) Console.WriteLine("Invalid moves list");
-            var helpTable = new ConsoleTable("v PC/User >");
-            for(int i = 0; i < moves.Length; i++)
+            ConsoleTable table = new ConsoleTable("v PC/User >");
+            for (int i = 0; i < _matrix.GetLength(0); i++)
             {
-                helpTable.AddColumn([moves[i]]);
+                string[] column = { _moves[i] };
+                table.AddColumn(column);
             }
-            for (int i = 0; i < moves.Length; i++)
+            for (int i = 0; i < _matrix.GetLength(1); i++)
             {
-                string[] row = new string[moves.Length + 1];
-                row[0] = moves[i];
-                int rowPointer = 1;
-                int[] winningMovesIndexes = GetWinningMovesIndexes(moves, i);
-                for(int j = 0; j < moves.Length; j++)
+                string[] row = new string[_moves.Length + 1];
+                row[0] = _moves[i];
+                for (int j = 0; j < _matrix.GetLength(0); j++)
                 {
-                    if (j == i)
+                    switch (_matrix[j, i])
                     {
-                        row[rowPointer++] = draw;
-                        continue;
-                    }
-                    if (winningMovesIndexes.Contains(j))
-                    {
-                        row[rowPointer++] = win;
-                        continue;
-                    }
-                    else
-                        row[rowPointer++] = lose;                    
+                        case 0:
+                            row[j + 1] = "Draw";
+                            break;
+                        case 1:
+                            row[j + 1] = "Win";
+                            break;
+                        case -1:
+                            row[j + 1] = "Lose";
+                            break;
+                        default:
+                            row[j + 1] = "Error";
+                            break;
+                    }                    
                 }
-                helpTable.AddRow(row);
+                table.AddRow(row);
             }
-            helpTable.Write();  
+            table.Write();
         }
-
-        int[] GetWinningMovesIndexes(string[] moves, int computerMoveIndex)
+        public Help(string[] moves, int[,] matrix)
         {
-            int[] winningIndexes = new int[moves.Length / 2];
-            for (int i = 0; i < winningIndexes.Length; i++)
-            {
-                int sourceIndex = (computerMoveIndex + i + 1) % moves.Length;
-                winningIndexes[i] = sourceIndex;
-            }
-            return winningIndexes;
+            _moves = moves;
+            _matrix = matrix;
         }
     }
 }

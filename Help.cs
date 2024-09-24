@@ -24,12 +24,22 @@ namespace RockPaperScissors
                         "Now you can use a third-party service to independently calculate the HMAC for the computer's move using this key.\r\n" +
                         $"This allows you to verify that the computer did not change its move after you made yours.(Use the move text as a message)\r\n{divider}\r\n");
                     break;
+                default:
+                    Console.WriteLine("Incorrect input!");
+                    break;
             }
 
         }
         public void PrintHelpTable()
         {
             ConsoleTable table = new ConsoleTable("v PC/User >");
+            var resultMap = new Dictionary<int, string>
+            {
+                { 0, "Draw" },
+                { 1, "Win" },
+                { -1, "Lose" }
+            };
+
             for (int i = 0; i < _matrix.GetLength(0); i++)
             {
                 string[] column = { _moves[i] };
@@ -41,21 +51,7 @@ namespace RockPaperScissors
                 row[0] = _moves[i];
                 for (int j = 0; j < _matrix.GetLength(0); j++)
                 {
-                    switch (_matrix[j, i])
-                    {
-                        case 0:
-                            row[j + 1] = "Draw";
-                            break;
-                        case 1:
-                            row[j + 1] = "Win";
-                            break;
-                        case -1:
-                            row[j + 1] = "Lose";
-                            break;
-                        default:
-                            row[j + 1] = "Error";
-                            break;
-                    }
+                    row[j + 1] = resultMap.TryGetValue(_matrix[j, i], out var result) ? result : "error";
                 }
                 table.AddRow(row);
             }

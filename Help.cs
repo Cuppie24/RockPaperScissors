@@ -5,6 +5,28 @@ namespace RockPaperScissors
     {
         private string[] _moves;
         private int[,] _matrix;
+
+        public void PrintHelpMenu()
+        {
+            string divider = "--------------------------------------------------------------------------------------------------------";
+            Console.WriteLine("1 - result matrix\r\n" +
+                "2 - about HMAC");
+            string playerInput = Console.ReadLine();
+            switch (playerInput)
+            {
+                case "1":
+                    PrintHelpTable();
+                    break;
+                case "2":
+                    Console.WriteLine($"\r\n{divider}\r\nBefore making its move, the computer generates a secure cryptographic key.\r\n" +
+                        "It uses this key to create an HMAC based on its move and shows it to you. At the end of the round,\r\n" +
+                        "the computer announces the result and reveals the original key.\r\n\r\n" +
+                        "Now you can use a third-party service to independently calculate the HMAC for the computer's move using this key.\r\n" +
+                        $"This allows you to verify that the computer did not change its move after you made yours.(Use the move text as a message)\r\n{divider}\r\n");
+                    break;
+            }
+
+        }
         public void PrintHelpTable()
         {
             ConsoleTable table = new ConsoleTable("v PC/User >");
@@ -33,7 +55,7 @@ namespace RockPaperScissors
                         default:
                             row[j + 1] = "Error";
                             break;
-                    }                    
+                    }
                 }
                 table.AddRow(row);
             }

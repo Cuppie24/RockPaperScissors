@@ -34,7 +34,7 @@ namespace RockPaperScissors
                 
                 switch (playerInput)
                 {
-                    case 0: help.PrintHelpTable();    
+                    case 0: help.PrintHelpMenu();    
                         shouldContinue = true;
                         break;
                     case int i when i == args.Length + 1: shouldExit = true;

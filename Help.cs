@@ -11,7 +11,7 @@ namespace RockPaperScissors
             string divider = "--------------------------------------------------------------------------------------------------------";
             Console.WriteLine("1 - result matrix\r\n" +
                 "2 - about HMAC");
-            string playerInput = Console.ReadLine();
+            string? playerInput = Console.ReadLine();
             switch (playerInput)
             {
                 case "1":

@@ -1,11 +1,12 @@
-﻿using System.Text;
+﻿using Org.BouncyCastle.Asn1;
+using System.Text;
 namespace RockPaperScissors
 {
     class Program
     {       
         public static void Main(string[] args)
         {
-            if (args.Length % 2 == 0 || args.Length == 0) throw new Exception("There is no entry arguments!");
+            if (args.Length % 2 == 0 || args.Length == 0) throw new Exception("There is no entry arguments and the number of arguments must be odd!");
             int keyLengthInBits = 256;
             Cryptography cryptography = new Cryptography();            
             MovesMatrix movesMatrix = new MovesMatrix(args);
@@ -13,6 +14,7 @@ namespace RockPaperScissors
 
             while (true)
             {
+                string divider = "\r\n----------------------------------------------------------------------------------------------------\r\n";
                 bool shouldExit = false, shouldContinue = false;
                 int computerMove, playerInput;
                 computerMove = MakeAMove(args.Length);                
@@ -57,7 +59,7 @@ namespace RockPaperScissors
                         break;
                 }
                 Console.WriteLine($"Key in Hex: {ByteArrayToHex(key)}\r\n" +
-                    $"Service for finding HMAC: https://www.liavaag.org/English/SHA-Generator/HMAC/\r\n");
+                    $"Service for finding HMAC: https://www.liavaag.org/English/SHA-Generator/HMAC/\r\nEncryption method SHA-256{divider}");
             }
         }
         static void PrintMenu(string[] moves, string hmacHex)
